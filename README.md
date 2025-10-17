@@ -52,7 +52,7 @@ Permite administrar pacientes, médicos, citas, exámenes y resultados de manera
 ## 👨‍⚕️ Autor
 
 Desarrollado por Jorge Ovando
-📧 jorgeovando@gmail.com
+📧 jorgeovando468@gmail.com
 
 ---
 
