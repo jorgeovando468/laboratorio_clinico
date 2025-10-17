@@ -37,7 +37,7 @@ Permite administrar pacientes, médicos, citas, exámenes y resultados de manera
 1. Clonar este repositorio:
 
    ```bash
-   git clone https://github.com/tuusuario/laboratorio-clinico.git
+   git clone https://github.com/jorgeovando468/laboratorio_clinico.git
    ```
 2. Importar la base de datos `laboratorioClinico.sql` en **phpMyAdmin** o **HeidiSQL**.
 3. Configurar la conexión en `conexion/MySQL.php` (usuario, contraseña, host y nombre de base de datos).
