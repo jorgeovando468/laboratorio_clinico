@@ -1,0 +1,504 @@
+/* ============================================
+   Custom Theme - Laboratorio Clínico
+   Diseño profesional y moderno para ambiente médico
+   ============================================ */
+
+:root {
+    /* === PALETA DE COLORES MÉDICO/CLÍNICO === */
+    /* Colores principales - Azul médico profesional */
+    --primary-color: #0d6efd;        /* Azul médico confiable */
+    --primary-dark: #0a58ca;         /* Azul oscuro para hover */
+    --primary-light: #6ea8fe;        /* Azul claro para backgrounds */
+    
+    /* Colores secundarios - Verde salud */
+    --secondary-color: #198754;      /* Verde salud/éxito */
+    --secondary-dark: #146c43;       /* Verde oscuro */
+    --secondary-light: #d1e7dd;      /* Verde suave para backgrounds */
+    
+    /* Colores de estado */
+    --success-color: #10b981;        /* Verde éxito - resultados positivos */
+    --danger-color: #dc3545;         /* Rojo alerta - urgente */
+    --warning-color: #ffc107;        /* Amarillo advertencia */
+    --info-color: #0dcaf0;           /* Cyan información */
+    
+    /* Colores neutros médicos */
+    --medical-white: #ffffff;
+    --medical-light: #f8f9fa;
+    --medical-gray: #e9ecef;
+    --medical-dark: #212529;
+    --medical-blue-gray: #6c757d;
+    
+    /* === SOBRESCRITURA BOOTSTRAP/ADMINLTE === */
+    --bs-primary: var(--primary-color);
+    --bs-primary-rgb: 13, 110, 253;
+    --bs-secondary: var(--secondary-color);
+    --bs-secondary-rgb: 25, 135, 84;
+    --bs-success: var(--success-color);
+    --bs-danger: var(--danger-color);
+    --bs-warning: var(--warning-color);
+    --bs-info: var(--info-color);
+    
+    /* Fondos y textos - Light Mode */
+    --bs-body-bg: var(--medical-light);
+    --bs-body-color: var(--medical-dark);
+    --bs-border-color: #dee2e6;
+    
+    /* === TIPOGRAFÍA === */
+    --font-primary: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-size-base: 0.95rem;
+    --font-weight-normal: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* === ESPACIADO Y DIMENSIONES === */
+    --border-radius-sm: 0.25rem;
+    --border-radius: 0.375rem;
+    --border-radius-lg: 0.5rem;
+    --box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    
+    /* === TRANSICIONES === */
+    --transition-base: all 0.3s ease;
+    --transition-fast: all 0.15s ease;
+}
+
+/* === DARK MODE === */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Ajuste de colores para dark mode */
+        --bs-primary: #4d94ff;
+        --bs-secondary: #20c997;
+        --bs-success: #34d399;
+        --bs-danger: #f87171;
+        --bs-warning: #fbbf24;
+        --bs-info: #22d3ee;
+        
+        /* Fondos oscuros */
+        --bs-body-bg: #1a1d23;
+        --bs-body-color: #e9ecef;
+        --medical-light: #2d3139;
+        --medical-gray: #3a3f4a;
+        --bs-border-color: #404854;
+        
+        /* Ajuste de sombras para dark */
+        --box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+        --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+        --box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ============================================
+   COMPONENTES PRINCIPALES
+   ============================================ */
+
+/* === HEADER/NAVBAR === */
+.app-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    border-bottom: none !important;
+    box-shadow: var(--box-shadow);
+    padding: 0.5rem 1rem;
+}
+
+.app-header .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: var(--font-weight-semibold);
+    transition: var(--transition-fast);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+}
+
+.app-header .navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-header .navbar-badge {
+    font-size: 0.65rem;
+    padding: 0.25em 0.5em;
+    font-weight: var(--font-weight-bold);
+}
+
+/* === SIDEBAR === */
+.app-sidebar {
+    background: linear-gradient(180deg, #ffffff 0%, var(--medical-light) 100%) !important;
+    border-right: 1px solid var(--bs-border-color);
+    box-shadow: var(--box-shadow);
+}
+
+@media (prefers-color-scheme: dark) {
+    .app-sidebar {
+        background: linear-gradient(180deg, var(--medical-light) 0%, var(--bs-body-bg) 100%) !important;
+    }
+}
+
+/* Brand/Logo del sidebar */
+.sidebar-brand .brand-link {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    border-bottom: 3px solid var(--primary-dark);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    transition: var(--transition-base);
+}
+
+.sidebar-brand .brand-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.sidebar-brand .brand-text {
+    color: #ffffff !important;
+    font-weight: var(--font-weight-bold);
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+/* Menú de navegación del sidebar */
+.sidebar-menu .nav-item {
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-menu .nav-link {
+    color: var(--medical-dark) !important;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    margin: 0.1rem 0.5rem;
+    transition: var(--transition-fast);
+    font-weight: var(--font-weight-normal);
+}
+
+@media (prefers-color-scheme: dark) {
+    .sidebar-menu .nav-link {
+        color: var(--bs-body-color) !important;
+    }
+}
+
+.sidebar-menu .nav-link:hover {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-dark) !important;
+    transform: translateX(5px);
+    box-shadow: var(--box-shadow-sm);
+}
+
+.sidebar-menu .nav-link.active {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    color: #ffffff !important;
+    font-weight: var(--font-weight-semibold);
+    box-shadow: var(--box-shadow);
+}
+
+.sidebar-menu .nav-link.active i {
+    color: #ffffff !important;
+}
+
+/* Iconos del menú */
+.sidebar-menu .nav-icon {
+    font-size: 1.1rem;
+    margin-right: 0.75rem;
+    color: var(--primary-color);
+    transition: var(--transition-fast);
+}
+
+.sidebar-menu .nav-link:hover .nav-icon,
+.sidebar-menu .nav-link.active .nav-icon {
+    transform: scale(1.1);
+}
+
+/* Submenú */
+.nav-treeview {
+    background-color: rgba(13, 110, 253, 0.03);
+    border-left: 3px solid var(--primary-color);
+    margin-left: 1rem;
+    padding: 0.5rem 0;
+    border-radius: var(--border-radius);
+}
+
+@media (prefers-color-scheme: dark) {
+    .nav-treeview {
+        background-color: rgba(77, 148, 255, 0.1);
+    }
+}
+
+/* === MAIN CONTENT === */
+.app-main {
+    background-color: var(--medical-light);
+    min-height: 100vh;
+}
+
+.app-content-header {
+    background-color: var(--medical-white);
+    border-bottom: 1px solid var(--bs-border-color);
+    box-shadow: var(--box-shadow-sm);
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .app-content-header {
+        background-color: var(--medical-light);
+    }
+}
+
+.app-content-header h3 {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.75rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.app-content-header h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 28px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    margin-right: 1rem;
+    border-radius: var(--border-radius);
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--medical-blue-gray);
+}
+
+/* === USER MENU === */
+.user-menu .dropdown-toggle {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-lg);
+    transition: var(--transition-fast);
+}
+
+.user-menu .dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-menu .user-image {
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.user-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.user-header img {
+    width: 80px;
+    height: 80px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 1rem;
+}
+
+.user-header p {
+    color: #ffffff;
+    margin: 0;
+}
+
+/* === DROPDOWN MENUS === */
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--box-shadow-lg);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1.5rem;
+    transition: var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.dropdown-divider {
+    margin: 0;
+    border-color: var(--bs-border-color);
+}
+
+/* === FOOTER === */
+.app-footer {
+    background: linear-gradient(135deg, var(--medical-light) 0%, var(--medical-white) 100%);
+    border-top: 1px solid var(--bs-border-color);
+    padding: 1.5rem;
+    color: var(--medical-blue-gray);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+    .app-footer {
+        background: linear-gradient(135deg, var(--bs-body-bg) 0%, var(--medical-light) 100%);
+    }
+}
+
+.app-footer a {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.app-footer a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* === BADGES === */
+.badge {
+    font-size: 0.7rem;
+    padding: 0.35em 0.65em;
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--border-radius);
+}
+
+/* === CARDS Y BOXES === */
+.card {
+    border: none;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition-base);
+}
+
+.card:hover {
+    box-shadow: var(--box-shadow-lg);
+    transform: translateY(-2px);
+}
+
+/* === BUTTONS === */
+.btn {
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-semibold);
+    padding: 0.5rem 1.25rem;
+    transition: var(--transition-fast);
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    box-shadow: var(--box-shadow-sm);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    box-shadow: var(--box-shadow);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
+}
+
+/* === FORMS === */
+.form-control,
+.form-select {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--bs-border-color);
+    transition: var(--transition-fast);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 0.5rem;
+    }
+    
+    .sidebar-brand .brand-text {
+        font-size: 1rem;
+    }
+    
+    .app-content-header h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* === SCROLLBAR PERSONALIZADA === */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--medical-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: var(--border-radius-lg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* === ANIMACIONES === */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.app-content > * {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* === UTILIDADES MÉDICAS === */
+.status-success {
+    color: var(--success-color);
+    font-weight: var(--font-weight-semibold);
+}
+
+.status-danger {
+    color: var(--danger-color);
+    font-weight: var(--font-weight-semibold);
+}
+
+.status-warning {
+    color: var(--warning-color);
+    font-weight: var(--font-weight-semibold);
+}
+
+.medical-highlight {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+    padding: 1rem;
+    border-radius: var(--border-radius-lg);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* === TRANSICIÓN GLOBAL === */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

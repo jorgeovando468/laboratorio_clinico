@@ -1,0 +1,479 @@
+/* ========================================
+   ESTILOS PARA COMPROBANTES DE IMPRESIÓN
+   Reutilizable para múltiples archivos print.php
+   Soporta: Comprobantes de Citas, Empleados, Exámenes y Facturas
+   ======================================== */
+
+/* Estilos para impresión (genéricos para todos los prints) */
+@media print {
+    body { 
+        margin: 0; 
+        padding: 20px;
+    }
+    .print-no-print { 
+        display: none !important; 
+    }
+    .print-container, .imprimir, .comprobante, .examen-print, .factura-print {
+        box-shadow: none !important;
+        border: 1px solid #dee2e6 !important;
+    }
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #dee2e6 !important;
+    }
+}
+
+/* Estilos base del body (genéricos) */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========================================
+   ESTILOS PARA COMPROBANTES DE CITAS
+   (Mantener intacto para herencia)
+   ======================================== */
+.print-container, .comprobante {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.header-comprobante {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header-comprobante h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.numero {
+    background: rgba(255,255,255,0.2);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.body-comprobante {
+    padding: 40px;
+}
+
+.fecha-destacada {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.fecha-destacada .dia {
+    font-size: 48px;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+}
+
+.fecha-destacada .mes-ano {
+    font-size: 18px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.info-item {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #667eea;
+}
+
+.info-item .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6c757d;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.info-item .value {
+    font-size: 18px;
+    color: #212529;
+    font-weight: 500;
+}
+
+.footer-comprobante {
+    background: #f8f9fa;
+    padding: 20px 40px;
+    border-top: 2px solid #e9ecef;
+    text-align: center;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* ========================================
+   ESTILOS PARA IMPRESIÓN DE EMPLEADOS
+   (Mantener intacto para herencia)
+   ======================================== */
+
+/* Contenedor principal para empleados */
+.imprimir {
+    max-width: 500px; /* Ajustado al estilo inline original */
+    margin: 50px auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* Para posicionar elementos internos */
+}
+
+/* Título principal */
+.imprimir h2 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Formulario (mínimo, ya que parece placeholder) */
+.imprimir form {
+    padding: 0;
+    margin: 0;
+}
+
+/* Card de Bootstrap (mejorado para print) */
+.imprimir .card {
+    max-width: 500px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.imprimir .card-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.imprimir .card-body {
+    padding: 30px 20px;
+}
+
+.imprimir .card-body .row {
+    margin: 0;
+}
+
+.imprimir .card-body .col-12:first-child {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.imprimir .nombre-empleado {
+    font-size: 30px; /* Destacado como en el original */
+    font-weight: bold;
+    color: #212529;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.imprimir .print-label {
+    font-weight: bold;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-right: 5px;
+    min-width: 60px; /* Para alineación */
+}
+
+.imprimir .print-value {
+    font-size: 16px;
+    color: #212529;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.imprimir .col-6 {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* ========================================
+   ESTILOS PARA IMPRESIÓN DE EXAMENES
+   (Mantener intacto para herencia)
+   ======================================== */
+
+/* Contenedor principal para exámenes */
+.examen-print {
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Card de Bootstrap (mejorado para print de exámenes) */
+.examen-print .card {
+    max-width: 500px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    background: white;
+}
+
+.examen-print .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-bottom: none;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.examen-print .card-body {
+    padding: 30px 20px;
+}
+
+.examen-print .card-body .row {
+    margin: 0;
+}
+
+.examen-print .card-body .col-12:first-child {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.examen-print .nombre-paciente {
+    font-size: 30px; /* Destacado como en el original */
+    font-weight: bold;
+    color: #212529;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.examen-print .print-label {
+    font-weight: bold;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-right: 5px;
+    min-width: 80px; /* Ajustado para labels más largos como "Tipo de Examen" */
+}
+
+.examen-print .print-value {
+    font-size: 16px;
+    color: #212529;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.examen-print .col-6 {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Estilo específico para fecha en value */
+.examen-print .print-value.fecha {
+    font-style: italic;
+    color: #667eea;
+}
+
+/* ========================================
+   ESTILOS PARA IMPRESIÓN DE FACTURAS
+   (Nuevos estilos adaptados para .factura-print y .card)
+   ======================================== */
+
+/* Contenedor principal para facturas */
+.factura-print {
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Card de Bootstrap (mejorado para print de facturas) */
+.factura-print .card {
+    max-width: 500px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: hidden;
+    background: white;
+}
+
+.factura-print .card-header {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%); /* Verde para finanzas */
+    color: white;
+    border-bottom: none;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.factura-print .card-body {
+    padding: 30px 20px;
+}
+
+.factura-print .card-body .row {
+    margin: 0;
+}
+
+.factura-print .card-body .col-12:first-child {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.factura-print .nombre-paciente {
+    font-size: 30px; /* Destacado como en el original */
+    font-weight: bold;
+    color: #212529;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.factura-print .print-label {
+    font-weight: bold;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-right: 5px;
+    min-width: 60px; /* Para alineación */
+}
+
+.factura-print .print-value {
+    font-size: 16px;
+    color: #212529;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.factura-print .col-6 {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Estilo específico para total (destacado) */
+.factura-print .print-value.total {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Estilo específico para fecha en value */
+.factura-print .print-value.fecha {
+    font-style: italic;
+    color: #667eea;
+}
+
+/* Badges de estado para facturas (reutilizando y expandiendo) */
+.factura-print .estado-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   ESTILOS COMPARTIDOS (Badges de estado genéricos)
+   ======================================== */
+.estado-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.estado-confirmado, .estado-pagado {
+    background: #d4edda;
+    color: #155724;
+}
+
+.estado-pendiente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.estado-cancelado {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.estado-activo {
+    background: #d4edda;
+    color: #155724;
+}
+
+.estado-inactivo {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Botón de impresión genérico (reutilizable) */
+.btn-imprimir {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 30px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.btn-imprimir:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
