@@ -1,17 +1,26 @@
 <?php
 
 require_once '../conexion/MySQL.php';
+require_once __DIR__ . '/whatsapp_lib.php';
 
 if (isset($_POST['guardar'])) {
     $json_datos = json_decode($_POST['guardar'], true);
     $base_datos = new MySQL();
-    
-    $query = $base_datos->conectar()->prepare(
+    $pdo = $base_datos->conectar();
+
+    $query = $pdo->prepare(
       "INSERT INTO cita
 	(paciente_id, medico_id, fecha, hora, estado)
-	VALUES (:paciente_id, :medico_id, :fecha, :hora,  :estado)"      
+	VALUES (:paciente_id, :medico_id, :fecha, :hora,  :estado)"
     );
     $query->execute($json_datos);
+
+    // Enviar confirmación por WhatsApp si está habilitado
+    $citaId = (int)$pdo->lastInsertId();
+    if ($citaId > 0) {
+        try { send_confirmation_for_cita($pdo, $citaId); } catch (Throwable $e) { }
+    }
+
     $base_datos->cerrarsesion();
 }
 
@@ -82,8 +91,9 @@ c.estado, p.nombre, m.nombre) like '%".$_POST['leer_descripcion']."%'
 if (isset($_POST['actualizar'])) {
      $json_datos = json_decode($_POST['actualizar'], true);
     $base_datos = new MySQL();
+    $pdo = $base_datos->conectar();
     
-    $query = $base_datos->conectar()->prepare(
+    $query = $pdo->prepare(
       "UPDATE cita SET
             paciente_id = :paciente_id,
             medico_id = :medico_id,
@@ -92,6 +102,12 @@ if (isset($_POST['actualizar'])) {
             estado = :estado
     WHERE id_cita = :id_cita");
     $query->execute($json_datos);
+
+    // reenviar confirmación por cambios de cita
+    if (!empty($json_datos['id_cita'])) {
+        try { send_confirmation_for_cita($pdo, (int)$json_datos['id_cita']); } catch (Throwable $e) { }
+    }
+
     $base_datos->cerrarsesion();   
 }
 

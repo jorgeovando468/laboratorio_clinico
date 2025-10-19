@@ -191,3 +191,34 @@ INSERT INTO muestra (examen_id, tipo, fecha_toma, estado) VALUES
 (3, 'Sangre', '2025-10-03', 'Analizada'),
 (4, 'Sangre', '2025-10-04', 'Pendiente'),
 (5, 'Hisopo', '2025-10-05', 'Analizada');
+
+-- ============================
+-- NUEVAS TABLAS PARA WHATSAPP Y RECORDATORIOS
+-- ============================
+
+-- Configuración de WhatsApp Cloud API
+CREATE TABLE IF NOT EXISTS config_whatsapp (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    phone_number_id VARCHAR(64) NOT NULL,
+    access_token TEXT NOT NULL,
+    country_code VARCHAR(8) NOT NULL DEFAULT '595',
+    enabled TINYINT(1) NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Log de recordatorios/confirmaciones enviados para evitar duplicados
+CREATE TABLE IF NOT EXISTS recordatorio_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cita_id INT NOT NULL,
+    tipo ENUM('24h','1h','confirmacion') NOT NULL,
+    enviado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(20) NOT NULL DEFAULT 'enviado',
+    destinatario VARCHAR(50),
+    FOREIGN KEY (cita_id) REFERENCES cita(id_cita),
+    UNIQUE KEY unique_cita_tipo (cita_id, tipo)
+);
+
+-- Fila de ejemplo/deshabilitada por defecto (complete con sus credenciales reales)
+INSERT INTO config_whatsapp (phone_number_id, access_token, country_code, enabled)
+VALUES ('', '', '595', 0);
